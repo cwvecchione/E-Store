@@ -1,4 +1,4 @@
-const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('./agentsOfShield.db');
+import { sqlite3 } from 'sqlite3';
+const db = new sqlite3.Database('./estore.db');
 
-module.exports = db;
+export default db;

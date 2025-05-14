@@ -1,6 +1,6 @@
-var express = require('express');
-var bodyParser = require("body-parser");
-const products = require('./products');
+import express from 'express';
+import bodyParser from 'body-parser';
+import products from './products';
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,6 +41,6 @@ app.delete("/product/:id", async function(req, res) {
     res.send({"message": "Success"});
 });
 
-app.listen(process.env.PORT || 3000,function(req,res){
+app.listen(process.env.PORT || 3000, function () {
     console.log("Server Started!");
 });
