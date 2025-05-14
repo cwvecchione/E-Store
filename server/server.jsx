@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import 'dotenvx/dotenvx/config';
 import products from './products';
 
 var app = express();
@@ -20,18 +21,20 @@ app.get("/product/:id", async function(req, res) {
 
 // POST
 app.post("/product", async function(req, res) {
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    await products.addproduct(firstName, lastName);
+    const poster = req.body.poster;
+    const name = req.body.name;
+    const price = req.body.price;
+    await products.addProduct(poster, name, price);
     res.send({"message": "Success"});
 });
 
 // PUT
 app.put("/product/:id", async function(req, res) {
     const id = req.params.id;
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    await products.editProduct(id,firstName,lastName);
+    const poster = req.body.poster;
+    const name = req.body.name;
+    const price = req.body.price;
+    await products.editProduct(id,poster, name, price);
     res.send({"message": "Success"});
 });
 
