@@ -22,9 +22,9 @@ function getProductById(id) {
     });
 }
 
-function addProduct(firstName, lastName) {
+function addProduct(poster, name, price) {
     return new Promise((resolve, reject) => {
-        db.run('INSERT INTO products (firstName, lastName) VALUES (?, ?)', firstName, lastName, (err) => {
+        db.run('INSERT INTO products (poster, name, price) VALUES (?, ?)', poster, name, price, (err) => {
             if(err)
                 reject(err);
             else
@@ -33,9 +33,9 @@ function addProduct(firstName, lastName) {
     });
 }
 
-function editProduct(id, firstName, lastName) {
+function editProduct(id, poster, name, price) {
     return new Promise((resolve, reject) => {
-        db.run('UPDATE products SET firstName = (?), lastName = (?) where id = (?)', [firstName, lastName, id], (err) => {
+        db.run('UPDATE products SET poster = (?), name = (?), price = (?) where id = (?)', [poster, name, price, id], (err) => {
             if(err)
                 reject(err);
             else
