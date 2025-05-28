@@ -1,5 +1,3 @@
-import { process } from "dotenv/config";
-
 function getSession(){
     const token = JSON.parse(sessionStorage.getItem("token"));
     const cbid = JSON.parse(sessionStorage.getItem("cbid"));

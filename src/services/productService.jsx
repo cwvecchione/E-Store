@@ -1,5 +1,3 @@
-import { process } from "dotenv/config";
-
 export async function getProductList(searchTerm){
     const response = await fetch(`${process.env.REACT_APP_HOST}/444/products?name_like=${searchTerm ? searchTerm : ""}`);
     if(!response.ok){
