@@ -1,14 +1,19 @@
 import { createContext, useContext, useReducer } from "react";
+import PropTypes from "prop-types";
 import { cartReducer } from "../reducers";
 
 const cartInitialState = {
     cartList: [],
     total: 0
-}
+};
 
 const CartContext = createContext(cartInitialState);
 
 export const CartProvider = ({children}) => {
+
+CartProvider.propTypes = {
+    children: PropTypes.node.isRequired
+};
     const [state, dispatch] = useReducer(cartReducer, cartInitialState);
 
     function addToCart(product){

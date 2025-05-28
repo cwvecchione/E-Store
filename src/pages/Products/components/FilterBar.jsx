@@ -1,6 +1,10 @@
 import { useFilter } from "../../../context";
+import PropTypes from "prop-types";
 
 export const FilterBar = ({setShow}) => {
+  FilterBar.propTypes = {
+    setShow: PropTypes.func.isRequired,
+  };
   const {state, dispatch} = useFilter();
 
   return (

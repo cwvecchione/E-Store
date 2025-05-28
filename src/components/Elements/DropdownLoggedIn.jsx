@@ -3,8 +3,12 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUser, logout } from "../../services";
+import PropTypes from "prop-types";
 
 export const DropdownLoggedIn = ({setDropdown}) => {
+    DropdownLoggedIn.propTypes = {
+        setDropdown: PropTypes.func.isRequired,
+    };
     const navigate = useNavigate();
     const [user, setUser] = useState({});
 

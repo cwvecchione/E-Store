@@ -1,6 +1,13 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export const Accordion = ({faq}) => {
+    Accordion.propTypes = {
+        faq: PropTypes.shape({
+            question: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        }).isRequired,
+    };
     const {question, answer} = faq;
     const [show, setShow] = useState(false);
 

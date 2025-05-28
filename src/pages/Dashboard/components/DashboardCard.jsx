@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom"
+import PropTypes from "prop-types";
 
 export const DashboardCard = ({order}) => {
+    DashboardCard.propTypes = {
+        order: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            amount_paid: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            cartList: PropTypes.arrayOf(
+                PropTypes.shape({
+                    id: PropTypes.number.isRequired,
+                    poster: PropTypes.string.isRequired,
+                    name: PropTypes.string.isRequired,
+                    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+                })
+            ).isRequired,
+        }).isRequired,
+    };
+
     return (
         <div className="max-w-4xl m-auto p-2 mb-5 border dark:border-slate-700">
             <div className="flex justify-between text-sm m-2 font-bold dark:text-slate-200">

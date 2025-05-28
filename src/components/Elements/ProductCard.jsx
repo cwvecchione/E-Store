@@ -3,8 +3,21 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context";
 import { Rating } from "./Rating";
+import PropTypes from "prop-types";
 
 export const ProductCard = ({product}) => {
+    ProductCard.propTypes = {
+        product: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            overview: PropTypes.string.isRequired,
+            poster: PropTypes.string.isRequired,
+            price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            rating: PropTypes.number.isRequired,
+            best_seller: PropTypes.bool.isRequired,
+            in_stock: PropTypes.bool.isRequired,
+        }).isRequired,
+    };
     const { cartList, addToCart, removeFromCart } = useCart();
     const [inCart, setInCart] = useState(false);
     const {id, name, overview, poster, price, rating, best_seller} = product;
