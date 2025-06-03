@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { useCart } from "../../../context";
 import { createOrder, getUser } from "../../../services";
 import PropTypes from "prop-types";
-import (PropTypes)
 
 export const Checkout = ({setCheckout}) => {
     Checkout.propTypes = {

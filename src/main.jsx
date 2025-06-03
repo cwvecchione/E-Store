@@ -12,7 +12,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <Router>
+        <Router future={{v7_relativeSplatPath: true,  v7_startTransition: true,}}>
             <CartProvider>
             <FilterProvider>
                 <ScrollToTop />

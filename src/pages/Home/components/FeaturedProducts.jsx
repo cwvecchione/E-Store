@@ -13,6 +13,7 @@ export const FeaturedProducts = () => {
         setProducts(data);
       } catch(error){
         toast.error(error.message, {closeButton: true, position: "bottom-center" });
+        console.log("Fetch Error:", error.message)
       }      
     }
     fetchProducts();
