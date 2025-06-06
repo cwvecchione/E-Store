@@ -11,7 +11,7 @@ export const PageNotFound = () => {
                 <div className="flex flex-col items-center my-4">
                     <p className="text-7xl text-gray-700 font-bold my-10 dark:text-white text-center">404, Oops!</p>
                     <div className="max-w-xs">
-                        <img className="" src={Logo} alt="CodeBook Page Not Found" />
+                        <img className="" src={Logo} alt="CW E-Store Page Not Found" />
                     </div>
                 </div>
                 <div className="flex justify-center my-4">

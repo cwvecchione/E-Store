@@ -4,7 +4,7 @@ export async function login(authDetail){
         headers: {"content-Type": "application/json"},
         body: JSON.stringify(authDetail)
     }
-    const response = await fetch(`${import.meta.env.REACT_APP_HOST}/login`, requestOptions);
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/login`, requestOptions);
     if(!response.ok){
         throw { message: response.statusText, status: response.status }; //eslint-disable-line
     }
@@ -24,7 +24,7 @@ export async function register(authDetail){
         headers: {"content-Type": "application/json"},
         body: JSON.stringify(authDetail)
     }  
-    const response = await fetch(`${import.meta.env.REACT_APP_HOST}/register`, requestOptions);
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/register`, requestOptions);
     if(!response.ok){
         throw { message: response.statusText, status: response.status }; //eslint-disable-line
     }
