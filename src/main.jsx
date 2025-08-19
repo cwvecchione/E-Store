@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { Auth0Provider } from '@auth0/auth0-react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
@@ -12,14 +13,22 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <Router future={{v7_relativeSplatPath: true,  v7_startTransition: true,}}>
-            <CartProvider>
-            <FilterProvider>
-                <ScrollToTop />
-                <ToastContainer closeButton={false} autoClose={3000} position={"bottom-right"} />
-                <App />
-            </FilterProvider>
-            </CartProvider>
-        </Router>
+        <Auth0Provider
+            domain={import.meta.env.VITE_AUTH0_DOMAIN}
+            clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+            authorizationParams={{
+            redirect_uri: window.location.origin
+            }}
+        >
+            <Router future={{v7_relativeSplatPath: true,  v7_startTransition: true,}}>
+                <CartProvider>
+                    <FilterProvider>
+                        <ScrollToTop />
+                        <ToastContainer closeButton={false} autoClose={3000} position={"bottom-right"} />
+                        <App />
+                    </FilterProvider>
+                </CartProvider>
+            </Router>
+        </Auth0Provider>
     </StrictMode>,
 )
