@@ -280,13 +280,13 @@
   "users": [
     {
       "email": "bob@example.com",
-      "password": "$2a$10$K9aEH3/VDb2QU/EsjrHGJO7X5JxCcg0bMAnBtyT3kBW9FL7FnnygO",
+      "password": "bob12345",
       "name": "Bob Example",
       "id": 1
     },
     {
       "email": "guest@example.com",
-      "password": "guest$2a$10$K9aEH3/VDb2QU/EsjrHGJO7X5JxCcg0bMAnBtyT3kBW9FL7FnnygO",
+      "password": "guest12345",
       "name": "Guest",
       "id": 2
     }
