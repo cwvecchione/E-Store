@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getUser, logout } from "../../services";
+import { getUser } from "../../services";
 import PropTypes from "prop-types";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const DropdownLoggedIn = ({setDropdown}) => {
     DropdownLoggedIn.propTypes = {
@@ -11,6 +12,7 @@ export const DropdownLoggedIn = ({setDropdown}) => {
     };
     const navigate = useNavigate();
     const [user, setUser] = useState({});
+    const { logout } = useAuth0();
 
     useEffect(() => {
         async function fetchData(){
@@ -44,7 +46,7 @@ export const DropdownLoggedIn = ({setDropdown}) => {
                 </li>
             </ul>
             <div className="py-1">
-                <span onClick={handleLogout} className="cursor-pointer block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log out</span>
+                <span onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} className="cursor-pointer block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log out</span>
             </div>
         </div>
     )
