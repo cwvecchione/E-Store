@@ -18,28 +18,30 @@ export const DashboardCard = ({order}) => {
     };
 
     return (
-        <div className="max-w-4xl m-auto p-2 mb-5 border dark:border-slate-700">
-            <div className="flex justify-between text-sm m-2 font-bold dark:text-slate-200">
-                <span>Order Id: {order.id}</span>
-                <span>Total: ${order.amount_paid}</span>
-            </div>
-            { order.cartList.map((product) => (
+        <div className="card card-compact card-bordered bg-base-100 max-w-4xl m-auto p-2 mb-5">
+            <div className="card-body p-3">
+                <div className="flex justify-between text-sm m-2 font-bold">
+                    <span>Order Id: {order.id}</span>
+                    <span>Total: ${order.amount_paid}</span>
+                </div>
+                { order.cartList.map((product) => (
                 <div key={product.id} className="flex flex-wrap justify-between max-w-4xl m-auto p-2 my-5 ">
                     <div className="flex">
                         <Link to={`/products/${product.id}`}>
-                            <img className="w-32 rounded-sm" src={product.poster} alt={product.name} />
+                            <img className="w-32 rounded-box-sm" src={product.poster} alt={product.name} />
                         </Link>
-                        <div className="">
+                        <div className="ml-3">
                             <Link to={`/products/${product.id}`}>
-                                <p className="text-lg ml-2 dark:text-slate-200">{product.name}</p>
+                                <p className="text-lg">{product.name}</p>
                             </Link>
-                            <div className="text-lg m-2 dark:text-slate-200">
+                            <div className="text-lg m-2">
                                 <span>${product.price}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             )) }
+            </div>
         </div>
     )
 }

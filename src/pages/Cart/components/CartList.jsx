@@ -29,7 +29,7 @@ export const CartList = () => {
           </p>
         </div>
         <div className="text-right my-5">
-          <button onClick={() => setCheckout(true)} type="button" className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-base px-7 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700">
+          <button onClick={() => setCheckout(true)} type="button" className="btn btn-primary px-7 py-2.5">
             PLACE ORDER <i className="ml-2 bi bi-arrow-right"></i>
           </button>
         </div>
