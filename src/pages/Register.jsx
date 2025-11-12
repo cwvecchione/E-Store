@@ -30,11 +30,11 @@ export const Register = () => {
     <form onSubmit={handleRegister}>
     <div className="mb-6">
         <label htmlFor="name" className="label"><span className="label-text">Your name</span></label>
-        <input type="name" id="name" className="input input-bordered w-full" placeholder="Shubham Sarda" required autoComplete="off" />
+        <input type="name" id="name" className="input input-bordered w-full" placeholder="Chris" required autoComplete="off" />
       </div>
       <div className="mb-6">
         <label htmlFor="email" className="label"><span className="label-text">Your email</span></label>
-        <input type="email" id="email" className="input input-bordered w-full" placeholder="shubham@example.com" required autoComplete="off" />
+        <input type="email" id="email" className="input input-bordered w-full" placeholder="chris@example.com" required autoComplete="off" />
       </div>
       <div className="mb-6">
         <label htmlFor="password" className="label"><span className="label-text">Your password</span></label>
