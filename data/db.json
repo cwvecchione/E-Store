@@ -289,6 +289,12 @@
       "password": "guest$2a$10$K9aEH3/VDb2QU/EsjrHGJO7X5JxCcg0bMAnBtyT3kBW9FL7FnnygO",
       "name": "Guest",
       "id": 2
+    },
+    {
+      "email": "chris@example.com",
+      "password": "$2a$10$Ajhv3RqoXR6kvJqj/FILGOyQimIKj8yLL1HRvNcvgzvwvtbc9WyXG",
+      "name": "Chris",
+      "id": 3
     }
   ]
 }
