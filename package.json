@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.9.0",
     "@tailwindcss/vite": "^4.1.6",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
@@ -32,6 +33,6 @@
     "vite": "^5.4.10"
   },
   "volta": {
-    "node": "20.18.0"
+    "node": "22.0.0"
   }
 }

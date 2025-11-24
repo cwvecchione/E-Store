@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { HomePage, ProductsList, ProductDetail, Login, Register, CartPage, OrderPage, DashboardPage, PageNotFound } from "../pages";
-import { ProtectedRoute } from "./ProtectedRoute";
+import { AuthenticationGuard } from "./components/authentication-guard";
+
 
 export const AllRoutes = () => {
   return (
@@ -13,9 +14,9 @@ export const AllRoutes = () => {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
 
-        <Route path="cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
-        <Route path="order-summary" element={<ProtectedRoute><OrderPage /></ProtectedRoute>} />
-        <Route path="dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+        <Route path="cart" element={<AuthenticationGuard><CartPage /></AuthenticationGuard>} />
+        <Route path="order-summary" element={<AuthenticationGuard><OrderPage /></AuthenticationGuard>} />
+        <Route path="dashboard" element={<AuthenticationGuard><DashboardPage /></AuthenticationGuard>} />
 
         <Route path="*" element={<PageNotFound />} />
     </Routes>
