@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Auth0ProviderWithNavigate } from "./components/Other/authentication-guard.js";
+import { Auth0ProviderWithNavigate } from "./components/Other/auth0-provider-with-navigate";
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
