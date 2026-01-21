@@ -1,5 +1,5 @@
 export async function getProductList(searchTerm){
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/444/products?name_like=${searchTerm ? searchTerm : ""}`);
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/products?name_like=${searchTerm ? searchTerm : ""}`);
     if(!response.ok){
         throw { message: response.statusText, status: response.status };
     }
@@ -8,7 +8,7 @@ export async function getProductList(searchTerm){
 }
 
 export async function getProduct(id){
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/444/products/${id}`);
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/products/${id}`);
     if(!response.ok){
         throw { message: response.statusText, status: response.status };
     }
@@ -17,7 +17,7 @@ export async function getProduct(id){
 }
 
 export async function getFeaturedList(){
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/444/featured_products`);
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/featured`);
     if(!response.ok){
         throw { message: response.statusText, status: response.status };
     }
