@@ -10,7 +10,8 @@ export const FeaturedProducts = () => {
     async function fetchProducts(){
       try{
         const data = await getFeaturedList();
-        setProducts(data);
+        console.log("Featured data received:", data);
+        setProducts(Array.isArray(data) ? data : data.featured_products || []);
       } catch(error){
         toast.error(error.message, {closeButton: true, position: "bottom-center" });
         console.log("Fetch Error:", error.message)

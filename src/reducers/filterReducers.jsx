@@ -4,7 +4,7 @@ export const filterReducer = (state, action) => {
     switch(type){
 
         case "PRODUCT_LIST":
-            return { productList: payload.products }
+            return { ...state, productList: payload.products }
         
         case "SORT_BY":
             return {...state, sortBy: payload.sortBy}
@@ -28,6 +28,6 @@ export const filterReducer = (state, action) => {
             }
         
         default:
-            throw new Error("No Cae Found!");
+            throw new Error("No Case Found!");
     }
 }

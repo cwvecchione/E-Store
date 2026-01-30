@@ -17,7 +17,7 @@ export async function getProduct(id){
 }
 
 export async function getFeaturedList(){
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/featured`);
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/featured_products`);
     if(!response.ok){
         throw { message: response.statusText, status: response.status };
     }

@@ -15,10 +15,15 @@ export const FilterProvider = ({children}) => {
     const [state, dispatch] = useReducer(filterReducer, filterInitialState);
 
     function initialProductList(products){
+        const normalized = Array.isArray(products)
+            ? products
+            : products && Array.isArray(products.products)
+            ? products.products
+            : [];
         dispatch({
             type: "PRODUCT_LIST",
             payload: {
-                products: products
+                products: normalized
             }
         });
     }
