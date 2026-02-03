@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/cwlogo.png";
 import { Search } from "../Sections/Search";
+import { useAuth0 } from "@auth0/auth0-react";
 import { DropdownLoggedOut, DropdownLoggedIn } from "../index";
 import { useCart } from "../../context";
 
@@ -11,6 +12,7 @@ export const Header = () => {
   const [searchSection, setSearchSection] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const token = JSON.parse(sessionStorage.getItem("token"));
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
@@ -39,7 +41,7 @@ export const Header = () => {
                     </span>                    
                   </Link>
                   <span onClick={() => setDropdown(!dropdown)} className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
-                  { dropdown && ( token ? <DropdownLoggedIn setDropdown={setDropdown} /> : <DropdownLoggedOut setDropdown={setDropdown} /> ) }
+                  { dropdown && (  ? <DropdownLoggedIn setDropdown={setDropdown} /> : <DropdownLoggedOut setDropdown={setDropdown} /> ) }
               </div>
           </div>
       </nav>
