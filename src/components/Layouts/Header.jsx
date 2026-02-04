@@ -33,11 +33,11 @@ export const Header = () => {
                   <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-STORE</span>
               </Link>
               <div className="flex items-center relative">
-                  <span
+                  {/*  <span
                     onClick={() => setDarkMode(!darkMode)}
                     aria-label="Toggle dark mode"
                     className={`cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi ${darkMode ? 'bi-sun' : 'bi-moon'}`}
-                  ></span>
+                  ></span> */}
                   <span onClick={() => setSearchSection(!searchSection)} className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search"></span>
                   <Link to="/cart" className="text-gray-700 dark:text-white mr-5">
                     <span className="text-2xl bi bi-cart-fill relative">
