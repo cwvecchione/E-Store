@@ -11,17 +11,8 @@ function getSession(){
  * @throws {Object} An object with `message` (response.statusText) and `status` (HTTP status code) if the HTTP response is not OK.
  */
 export async function getUser(){
-    const browserData = getSession();
-    const requestOptions = {
-        method: "GET",
-        headers: {"Content-Type": "application/json", Authorization: `Bearer ${browserData.token}`}
-    }
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/users/${browserData.cbid}`, requestOptions);
-    if(!response.ok){
-        throw { message: response.statusText, status: response.status }; //eslint-disable-line
-    }
-    const data = await response.json();
-    return data;
+    const { cbid } = getSession();
+    return authenticatedFetch(`${import.meta.env.VITE_SERVER_URL}/users/${cbid}`);
 }
 
 /**
@@ -31,17 +22,8 @@ export async function getUser(){
  * @throws {{message: string, status: number}} An object with `message` (response.statusText) and `status` (HTTP status code) when the HTTP response is not OK.
  */
 export async function getUserOrders(){
-    const browserData = getSession();
-    const requestOptions = {
-        method: "GET",
-        headers: {"Content-Type": "application/json", Authorization: `Bearer ${browserData.token}`}
-    }
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/orders?user.id=${browserData.cbid}`, requestOptions);
-    if(!response.ok){
-        throw { message: response.statusText, status: response.status }; //eslint-disable-line
-    }
-    const data = await response.json();
-    return data;
+    const { cbid } = getSession();
+    return authenticatedFetch(`${import.meta.env.VITE_SERVER_URL}/orders?user.id=${cbid}`);
 }
 
 /**
@@ -57,7 +39,6 @@ export async function getUserOrders(){
  * @throws {Object} If the server responds with a non-OK status; object contains `message` (statusText) and `status` (HTTP status code).
  */
 export async function createOrder(cartList, total, user){
-    const browserData = getSession();
     const order = {
         cartList: cartList,
         amount_paid: total,
@@ -68,15 +49,24 @@ export async function createOrder(cartList, total, user){
             id: user.id
         }
     }
-    const requestOptions = {
+    return authenticatedFetch(`${import.meta.env.VITE_SERVER_URL}/orders`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${browserData.token}` },
         body: JSON.stringify(order)
-    }
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/orders`, requestOptions);
-    if(!response.ok){
+    });
+}
+
+async function authenticatedFetch(url, options = {}) {
+    const { token } = getSession();
+    const response = await fetch(url, {
+        ...options,
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            ...options.headers,
+        },
+    });
+    if (!response.ok) {
         throw { message: response.statusText, status: response.status }; //eslint-disable-line
     }
-    const data = await response.json();
-    return data;
+    return response.json();
 }
