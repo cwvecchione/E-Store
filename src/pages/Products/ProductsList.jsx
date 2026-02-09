@@ -19,8 +19,10 @@ export const ProductsList = () => {
   useEffect(() => {
     async function fetchProducts(){
       try{
+        console.debug("ProductsList: fetching for searchTerm=", searchTerm);
         const data = await getProductList(searchTerm);
-        initialProductList(data); 
+        console.debug("ProductsList: fetched data=", data);
+        initialProductList(data);
       } catch(error){
         toast.error(error.message, {closeButton: true, position: "bottom-center" });
       }
@@ -41,10 +43,11 @@ export const ProductsList = () => {
           </div>    
 
           <div className="flex flex-wrap justify-center lg:flex-row">
+            { console.debug("ProductsList: products from context=", products) }
             { Array.isArray(products) ? products.map((product) => (
               <ProductCard key={product.id} product={product} />
-            )) : null }            
-          </div>  
+            )) : null }
+          </div>
         </section>
 
         { show && <FilterBar setShow={setShow} /> }
