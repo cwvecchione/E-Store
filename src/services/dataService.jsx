@@ -57,6 +57,11 @@ export async function createOrder(cartList, total, user){
 
 async function authenticatedFetch(url, options = {}) {
     const { token } = getSession();
+    
+    if (!token) {
+        throw { message: "Missing authentication token", status: 401 }; //eslint-disable-line
+    }
+    
     const response = await fetch(url, {
         ...options,
         headers: {

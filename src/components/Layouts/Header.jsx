@@ -32,7 +32,7 @@ export const Header = () => {
                   <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-STORE</span>
               </Link>
               <div className="flex items-center relative">
-                  // TODO: Re-enable dark mode toggle
+                  {/* TODO: Re-enable dark mode toggle */}
                   {/*  <span
                     onClick={() => setDarkMode(!darkMode)}
                     aria-label="Toggle dark mode"
