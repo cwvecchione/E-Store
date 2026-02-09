@@ -15,6 +15,11 @@ export const DropdownLoggedIn = ({setDropdown}) => {
     const { logout } = useAuth0();
 
     useEffect(() => {
+        /**
+         * Fetches the current authenticated user's data and updates component state or initiates logout.
+         *
+         * If the fetched data contains an `email` field, updates the component `user` state via `setUser`; if not, calls `handleLogout`. On error, displays a toast with the error message (bottom-center, with close button).
+         */
         async function fetchData(){
             try{
                 const data = await getUser();
