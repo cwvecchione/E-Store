@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useTitle } from "../hooks/useTitle";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

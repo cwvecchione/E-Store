@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')).render(
           domain={import.meta.env.VITE_AUTH0_DOMAIN}
           clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
           authorizationParams={{
-          redirect_uri: window.location.origin
+            redirect_uri: window.location.origin
           }}
       >
         <Router future={{v7_relativeSplatPath: true,  v7_startTransition: true,}}>

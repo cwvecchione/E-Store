@@ -3,9 +3,6 @@ import PropTypes from "prop-types";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const DropdownLoggedOut = ({setDropdown}) => {
-    DropdownLoggedOut.propTypes = {
-        setDropdown: PropTypes.func.isRequired,
-    };
     const { loginWithRedirect } = useAuth0();
     return (
         <div id="dropdownAvatar" className="select-none	absolute top-10 right-0 z-10 w-44 bg-white rounded-sm divide-y divide-gray-100 shadow-sm dark:bg-gray-700 dark:divide-gray-600">
@@ -23,3 +20,7 @@ export const DropdownLoggedOut = ({setDropdown}) => {
         </div>
     )
 }
+DropdownLoggedOut.propTypes = {
+    setDropdown: PropTypes.func.isRequired,
+};
+

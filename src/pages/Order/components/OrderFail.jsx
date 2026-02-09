@@ -9,7 +9,7 @@ export const OrderFail = () => {
         </div>
         <div className="my-5">
             <p>Your order is not confirmed.</p>
-            <p>Please contact <span className="">codebook@example.com</span> for support.</p>
+            <p>Please contact <span>codebook@example.com</span> for support.</p>
         </div>
         <Link to="/cart" type="button" className="text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-hidden">Check Cart Again<i className="ml-2 bi bi-cart"></i></Link>
     </section>

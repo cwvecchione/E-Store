@@ -11,7 +11,6 @@ export const Header = () => {
   const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMode")) || false);
   const [searchSection, setSearchSection] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const token = JSON.parse(sessionStorage.getItem("token"));
   const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
