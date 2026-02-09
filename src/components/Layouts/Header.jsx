@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/cwlogo.png";
 import { Search } from "../Sections/Search";
+import { useAuth0 } from "@auth0/auth0-react";
 import { DropdownLoggedOut, DropdownLoggedIn } from "../index";
 import { useCart } from "../../context";
 
@@ -10,7 +11,7 @@ export const Header = () => {
   const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMode")) || false);
   const [searchSection, setSearchSection] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const token = JSON.parse(sessionStorage.getItem("token"));
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
@@ -31,7 +32,12 @@ export const Header = () => {
                   <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-STORE</span>
               </Link>
               <div className="flex items-center relative">
-                  <span onClick={() => setDarkMode(!darkMode)} className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-gear-wide-connected"></span>
+                  {/* TODO: Re-enable dark mode toggle */}
+                  {/*  <span
+                    onClick={() => setDarkMode(!darkMode)}
+                    aria-label="Toggle dark mode"
+                    className={`cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi ${darkMode ? 'bi-sun' : 'bi-moon'}`}
+                  ></span> */}
                   <span onClick={() => setSearchSection(!searchSection)} className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search"></span>
                   <Link to="/cart" className="text-gray-700 dark:text-white mr-5">
                     <span className="text-2xl bi bi-cart-fill relative">
@@ -39,7 +45,7 @@ export const Header = () => {
                     </span>                    
                   </Link>
                   <span onClick={() => setDropdown(!dropdown)} className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
-                  { dropdown && ( token ? <DropdownLoggedIn setDropdown={setDropdown} /> : <DropdownLoggedOut setDropdown={setDropdown} /> ) }
+                  { dropdown && ( isAuthenticated ? <DropdownLoggedIn setDropdown={setDropdown} /> : <DropdownLoggedOut setDropdown={setDropdown} /> ) }
               </div>
           </div>
       </nav>

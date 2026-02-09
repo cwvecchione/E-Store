@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUser, logout } from "../../services";
 import PropTypes from "prop-types";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const DropdownLoggedIn = ({setDropdown}) => {
     DropdownLoggedIn.propTypes = {
@@ -11,8 +12,14 @@ export const DropdownLoggedIn = ({setDropdown}) => {
     };
     const navigate = useNavigate();
     const [user, setUser] = useState({});
+    const { logout } = useAuth0();
 
     useEffect(() => {
+        /**
+         * Fetches the current authenticated user's data and updates component state or initiates logout.
+         *
+         * If the fetched data contains an `email` field, updates the component `user` state via `setUser`; if not, calls `handleLogout`. On error, displays a toast with the error message (bottom-center, with close button).
+         */
         async function fetchData(){
             try{
                 const data = await getUser();
@@ -44,7 +51,7 @@ export const DropdownLoggedIn = ({setDropdown}) => {
                 </li>
             </ul>
             <div className="py-1">
-                <span onClick={handleLogout} className="cursor-pointer block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log out</span>
+                <span onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} className="cursor-pointer block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log out</span>
             </div>
         </div>
     )
