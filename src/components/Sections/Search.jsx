@@ -1,15 +1,18 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export const Search = ({ setSearchSection }) => {
   const navigate = useNavigate();
-  const searchRef = useRef(null);
+  const [query, setQuery] = useState("");
 
   const handleSearch = (event) => {
     event.preventDefault();
+    const trimmedQuery = query.trim();
+    if (!trimmedQuery) return;
     setSearchSection(false);
-    navigate(`/products?q=${searchRef.current?.value || ""}`);
+    navigate(`/products?q=${encodeURIComponent(trimmedQuery)}`);
+    setQuery("");
   };
 
   return (
@@ -18,7 +21,8 @@ export const Search = ({ setSearchSection }) => {
         <div className="relative w-full">
           <span className="bi bi-search flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></span>
           <input
-            ref={searchRef}
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
             name="search"
             type="text"
             id="simple-search"
