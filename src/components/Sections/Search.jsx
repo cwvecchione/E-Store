@@ -19,6 +19,7 @@ export const Search = ({ setSearchSection }) => {
     <div className="mx-auto max-w-(--breakpoint-xl) p-2 my-5">
       <form onSubmit={handleSearch} className="flex items-center">
         <div className="relative w-full">
+          <label htmlFor="simple-search" className="sr-only">Search</label>
           <span className="bi bi-search flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></span>
           <input
             value={query}
@@ -35,6 +36,7 @@ export const Search = ({ setSearchSection }) => {
         <button
           type="submit"
           className="bi bi-search py-2.5 px-3 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-hidden focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          aria-label="Search"
         ></button>
       </form>
     </div>
