@@ -4,7 +4,6 @@ export const filterReducer = (state, action) => {
     switch(type){
 
         case "PRODUCT_LIST":
-            console.debug("filterReducer: PRODUCT_LIST payload=", payload);
             return { ...state, productList: payload.products }
         
         case "SORT_BY":

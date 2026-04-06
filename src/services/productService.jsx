@@ -1,5 +1,5 @@
-export async function getProductList(searchTerm){
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/products?name_like=${searchTerm ? searchTerm : ""}`);
+export async function getProductList(){
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/products`);
     if(!response.ok){
         throw { message: response.statusText, status: response.status };
     }

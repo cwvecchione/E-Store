@@ -20,7 +20,6 @@ export const FilterProvider = ({children}) => {
             : products && Array.isArray(products.products)
             ? products.products
             : [];
-        console.debug("FilterContext: initialProductList normalized=", normalized);
         dispatch({
             type: "PRODUCT_LIST",
             payload: {

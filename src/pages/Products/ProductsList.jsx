@@ -20,9 +20,21 @@ export const ProductsList = () => {
     async function fetchProducts(){
       try{
         console.debug("ProductsList: fetching for searchTerm=", searchTerm);
-        const data = await getProductList(searchTerm);
+        const data = await getProductList();
         console.debug("ProductsList: fetched data=", data);
-        initialProductList(data);
+        const normalized = Array.isArray(data)
+          ? data
+          : data && Array.isArray(data.products)
+          ? data.products
+          : [];
+        const filtered = searchTerm
+          ? normalized.filter(product =>
+              product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+          : normalized;
+        console.debug("ProductsList: filtered data=", filtered);
+        initialProductList(filtered);
+    fetchProducts();
       } catch(error){
         toast.error(error.message, {closeButton: true, position: "bottom-center" });
       }
