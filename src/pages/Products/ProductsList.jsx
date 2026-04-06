@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 export const ProductsList = () => {
   const { products, initialProductList } = useFilter();
   const [show, setShow] = useState(false);
+  const [allProducts, setAllProducts] = useState([]);
   const search = useLocation().search;
   const searchTerm = new URLSearchParams(search).get("q");
   useTitle("Explore eBooks Collection");
@@ -19,14 +20,28 @@ export const ProductsList = () => {
   useEffect(() => {
     async function fetchProducts(){
       try{
-        const data = await getProductList(searchTerm);
-        initialProductList(data); 
+        const data = await getProductList();
+        const normalized = Array.isArray(data)
+          ? data
+          : data && Array.isArray(data.products)
+          ? data.products
+          : [];
+        setAllProducts(normalized);
       } catch(error){
         toast.error(error.message, {closeButton: true, position: "bottom-center" });
       }
     }
     fetchProducts();
-  }, [searchTerm]); //eslint-disable-line
+  }, []); // Fetch once on mount
+
+  useEffect(() => {
+    const filtered = searchTerm
+      ? allProducts.filter(product =>
+          (product.name || '').toLowerCase().includes((searchTerm || '').toLowerCase())
+        )
+      : allProducts;
+    initialProductList(filtered);
+  }, [searchTerm, allProducts, initialProductList]); // Filter on searchTerm or allProducts change
 
   return (
     <main>
@@ -43,8 +58,8 @@ export const ProductsList = () => {
           <div className="flex flex-wrap justify-center lg:flex-row">
             { Array.isArray(products) ? products.map((product) => (
               <ProductCard key={product.id} product={product} />
-            )) : null }            
-          </div>  
+            )) : null }
+          </div>
         </section>
 
         { show && <FilterBar setShow={setShow} /> }
